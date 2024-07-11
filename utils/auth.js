@@ -59,8 +59,8 @@ const sendEmail = async (email, subject, text) => {
           secure: true,
           // requireTLS:true,
           auth: {
-              user: 'ajay.meena@graffersid.com',  
-               pass: 'Ajay@3210'
+              user: 'ajay@graffersid.com',  
+               pass: '*******'
           },
       });
   
