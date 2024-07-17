@@ -51,7 +51,12 @@ export const StatusCodes = {
     
     DATABASE_ERROR: 'An error occurred with the database. Please try again later.',
     
-    SERVER_ERROR: 'An internal server error occurred. Please try again later.'
+    SERVER_ERROR: 'An internal server error occurred. Please try again later.',
+
+    COMPANY_CREATED: 'Company created successfully.',
+    COMPANY_ALREADY_EXISTS: 'Company already exists',
+    COMPANY_DELETED: 'Deleted company successfully'
+
 };
 
   

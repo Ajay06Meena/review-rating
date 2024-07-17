@@ -119,7 +119,6 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     let user = await UserModel.findOne({ email });
-    // console.log(password, user);
     if (user) {
       const isPassword = comparePassword(password, user.password, user.salt);
       user = user.toObject();

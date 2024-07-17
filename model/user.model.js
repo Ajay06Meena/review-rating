@@ -36,6 +36,7 @@ const userSchema = new Schema({
     default: null,
    },
   isActive: { type: Boolean, default: false },
+  createdBy: { type: Schema.Types.ObjectId, ref: "User" },
 },
 {timestamps: true}
 );

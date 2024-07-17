@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { responseMessages, StatusCodes } from "./constant.js";
+import { logger } from "./logger.js";
 
 export const authorization = (req, res, next) => {
   try {
@@ -12,7 +13,10 @@ export const authorization = (req, res, next) => {
       });
     }
     const tokenVerify = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
     if (tokenVerify) {
+      req.body.email = tokenVerify.email
+      req.body.createdBy = tokenVerify._id
       next();
     } else {
       res.status(StatusCodes.UNAUTHORIZED).json({
@@ -21,10 +25,10 @@ export const authorization = (req, res, next) => {
       });
     }
   } catch (error) {
-    logger.error(error, { service: "Authorization" });
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    // logger.error(error, { service: "Authorization" });
+    res.status(StatusCodes.UNAUTHORIZED).json({
       success: false,
-      message: responseMessages.INTERNAL_SERVER_ERROR,
+      message: responseMessages.TOKEN_REQUIRED,
     });
   }
 };

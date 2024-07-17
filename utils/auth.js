@@ -50,7 +50,6 @@ const generateToken = (payload) => {
 
 const sendEmail = async (email, subject, text) => {
   try {
-    // console.log(email, subject,"check12", text);
       const transporter = await nodemailer.createTransport({
           host: 'smtp.zoho.com',
          // host: process.env.host,
@@ -71,7 +70,6 @@ const sendEmail = async (email, subject, text) => {
           text: "testing 1232434235424353456",
       },
       (error, info) => {
-        console.log("error-----------------------------", error);
         if (error) {
           logger.error(error, { service: "mail-util" });
         }

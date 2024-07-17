@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import userRoute from "./route/user.route.js";
+
 // import companyRoute from "./route/company.route.js";
 // import swaggerUi from 'swagger-ui-express';
 // import specs from './swaggerConfig.js';
@@ -10,6 +11,9 @@ import userRoute from "./route/user.route.js";
 import { connectDatabase } from "./utils/database.js";
 import { logger } from "./utils/logger.js";
 import { StatusCodes } from "./utils/constant.js";
+import companyRoute from "./route/company.route.js";
+import reviewRoute from "./route/review.route.js";
+
 dotenv.config();
 
 const app = express();
@@ -20,6 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true })); //Ajju it is for form data
 app.use(cors());
 
 app.use("/user", userRoute);
+app.use("/company", companyRoute)
+app.use("/review", reviewRoute);
+
 // app.use("/company", companyRoute);
 app.get("/health", (req, res) => {
   res.json("API is working");
